@@ -1,7 +1,6 @@
 {
   "name": "ringcentral-widgets - Copy",
   "version": "0.0.1",
-  "homepage": "https://Automationetaxservice.github.io/cservice",
   "description": "A RingCentral Widgets App",
   "browserslist": "> 0.25%, ie > 10",
   "scripts": {
