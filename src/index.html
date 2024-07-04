@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <title>Customer Service</title>
+    <script>
+      var panel = document.querySelector(".slds-utility-panel.slds-is-open");
+      if(panel){
+        panel.style.height = "600px!important"
+      }
+      function mostrarTercerosGreetDiv(){
+        if(document.getElementById("provieneLlamadaGreet").value == 'En nombre del cliente de terceros'){
+          document.getElementById("tercerosGreetDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("tercerosGreetDiv").classList.add("hidden");
+        }
+      }
+      function parentezcoGreet(source){
+        var checkboxes = document.getElementsByName('parentezcoTitularGreet[]');
+        var checkboxesChecked = [];
+        for (var i=0; i<checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+              checkboxesChecked.push(checkboxes[i].value);
+          }
+        }
+        return checkboxesChecked;
+      }
+      function mostrarTipoAgenciaDivGreet(){
+        var checkboxesChecked = parentezcoGreet();
+        if(checkboxesChecked.length == 0){
+          document.getElementById("personaLlamadaDiv").classList.remove("hidden");
+          document.getElementById("tipoAgenciaGreetDiv").classList.add("hidden");
+        }
+        if(checkboxesChecked.length == 1){
+          if(checkboxesChecked.includes("Otro")){
+            document.getElementById("tipoAgenciaGreetDiv").classList.remove("hidden");
+            document.getElementById("personaLlamadaDiv").classList.add("hidden");
+          }else if(checkboxesChecked.includes("All")){
+            document.getElementById("tipoAgenciaGreetDiv").classList.add("hidden");
+            document.getElementById("personaLlamadaDiv").classList.add("hidden");
+          }else{
+            document.getElementById("tipoAgenciaGreetDiv").classList.add("hidden");
+            document.getElementById("personaLlamadaDiv").classList.remove("hidden");
+          }
+        }
+        if(checkboxesChecked.length > 1){
+          if(checkboxesChecked.includes("Otro")){
+            document.getElementById("tipoAgenciaGreetDiv").classList.add("hidden")
+            document.getElementById("personaLlamadaDiv").classList.add("hidden");
+          }else{
+            document.getElementById("tipoAgenciaGreetDiv").classList.add("hidden");
+            document.getElementById("personaLlamadaDiv").classList.remove("hidden");
+          }
+        }
+      }
+      function namesAuth(){
+        if(document.getElementById('nombreAuthNo').checked) {
+          document.getElementById("firstNameAuthDiv").classList.remove("hidden");
+          document.getElementById("lastNameAuthDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("firstNameAuthDiv").classList.add("hidden");
+          document.getElementById("lastNameAuthDiv").classList.add("hidden");
+        }
+      }
+      function phoneAuth(){
+        if(document.getElementById('telefonoAuthNo').checked) {
+          document.getElementById("phoneNumberAuthDiv").classList.remove("hidden");
+          document.getElementById("phoneNotesAuthDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("phoneNumberAuthDiv").classList.add("hidden");
+          document.getElementById("phoneNotesAuthDiv").classList.add("hidden");
+        }
+      }
+      function emailAuth(){
+        if(document.getElementById('correoAuthNo').checked) {
+          document.getElementById("emailAuthDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("emailAuthDiv").classList.add("hidden");
+        }
+      }
+      function SSNAuth(){
+        if(document.getElementById('seguroAuthNo').checked) {
+          document.getElementById("ssnAuthDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("ssnAuthDiv").classList.add("hidden");
+        }
+      }
+      function addressAuth(){
+        if(document.getElementById('direccionAuthNo').checked) {
+          document.getElementById("adressAuthDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("adressAuthDiv").classList.add("hidden");
+        }
+      }
+      function fechaAuth(){
+        if(document.getElementById('fechaAuthNo').checked) {
+          document.getElementById("fechaAuthDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("fechaAuthDiv").classList.add("hidden");
+        }
+      }
+      function casadoAuth(){
+        if(document.getElementById('estadocivilFilingProbeCasado').checked) {
+          document.getElementById('casadoDiv').classList.remove("hidden");
+        }else{
+          document.getElementById('casadoDiv').classList.add("hidden");
+        }
+      }
+      function notaIngresoEsposo(){
+        if(document.getElementById('ingresosFilingProbeNo').checked){
+          document.getElementById('notaIngresoEsposoDiv').classList.add("hidden");
+        }else if(document.getElementById('ingresosFilingProbeSi').checked){
+          document.getElementById('notaIngresoEsposoDiv').classList.remove("hidden");
+        }
+      }
+      function dependentsDiv(){
+        if(document.getElementById('dependienteDependentsProbeSi').checked){
+          document.getElementById('dependentsDivSi').classList.remove("hidden");
+        }else{
+          document.getElementById('dependentsDivSi').classList.add("hidden");
+        }
+      }
+      function agregarDependientesDiv(){
+        if(document.getElementById('changeDependentProbeAgregar').checked){
+          document.getElementById('agregarDependientesDiv').classList.remove("hidden");
+          document.getElementById('retirarDependientesDiv').classList.add("hidden");
+        }else if(document.getElementById('changeDependentProbeRetirar').checked){
+          document.getElementById('agregarDependientesDiv').classList.add("hidden");
+          document.getElementById('retirarDependientesDiv').classList.remove("hidden");
+        }
+      }
+      function mostrarCantidadDineroDiv(){
+        if(document.getElementById('trabajaIncomeDependentProbeSi').checked){
+          document.getElementById('cantidadDineroDiv').classList.remove("hidden");
+        }else{
+          document.getElementById('cantidadDineroDiv').classList.add("hidden");
+        }
+      }
+      function mostrarNormasW2Div(){
+        if(document.getElementById('retencionIncomeProbeSi').checked){
+          document.getElementById('normasW2Div').classList.remove("hidden");
+        }else{
+          document.getElementById('normasW2Div').classList.add("hidden");
+        }
+      }
+      function mostrarW2Div(){
+        if(document.getElementById('normasIncomeProbeSi').checked){
+          document.getElementById('cuantasW2Div').classList.remove("hidden");
+        }else{
+          document.getElementById('cuantasW2Div').classList.add("hidden");
+        }
+      }
+      function mostrarDeclaraIngresosDiv(){
+        if(document.getElementById('pagoIncomeProbeEfectivo').checked){
+          document.getElementById('declaraIngresosDiv').classList.remove("hidden");
+        }else{
+          document.getElementById('declaraIngresosDiv').classList.add("hidden");
+        }
+      }
+      function mostrar1099Div(){
+        if(document.getElementById('declaraIncomeProbe1099').checked){
+          document.getElementById('cuantas1099Div').classList.remove("hidden");
+        }else{
+          document.getElementById('cuantas1099Div').classList.add("hidden");
+        }
+      }
+      function mostrarRentaDiv(){
+        if(document.getElementById('casaIncomeProbeSi').checked){
+          document.getElementById('rentaIngresoDiv').classList.remove("hidden");
+        }else{
+          document.getElementById('rentaIngresoDiv').classList.add("hidden");
+        }
+      }
+    
+      function parentezcoGreetCheckAll(source){
+        checkboxes = document.getElementsByName('parentezcoTitularGreet[]'); 
+        for(var i=0, n=checkboxes.length;i<n;i++) { 
+          checkboxes[i].checked = source.checked; 
+          mostrarTipoAgenciaDivGreet(source);
+        }
+      }
+      function parentezcoRecapCheckAll(source){
+        checkboxes = document.getElementsByName('parentezcoTitularRecap[]'); 
+        for(var i=0, n=checkboxes.length;i<n;i++) { 
+          checkboxes[i].checked = source.checked;
+        }
+      }
+      function agenciaGreetCheckAll(source){
+        checkboxes = document.getElementsByName('tipoAgenciaGreet[]'); 
+        for(var i=0, n=checkboxes.length;i<n;i++) { 
+          checkboxes[i].checked = source.checked; 
+        }
+      }
+      function agenciaRecapCheckAll(source){
+        checkboxes = document.getElementsByName('tipoAgenciaRecap[]'); 
+        for(var i=0, n=checkboxes.length;i<n;i++) { 
+          checkboxes[i].checked = source.checked; 
+        }
+      }
+      function asistidoImpuestosCheckAll(source) { 
+        checkboxes = document.getElementsByName('asistidoImpuestos[]'); 
+        for(var i=0, n=checkboxes.length;i<n;i++) { 
+          checkboxes[i].checked = source.checked; 
+        }
+      }
+      function asistidoRecapCheckAll(source) { 
+        checkboxes = document.getElementsByName('asistidoRecap[]'); 
+        for(var i=0, n=checkboxes.length;i<n;i++) { 
+          checkboxes[i].checked = source.checked; 
+        }
+      }
+      function apoyarImpuestosCheckAll(source) { 
+        checkboxes = document.getElementsByName('apoyarImpuestos[]'); 
+        for(var i=0, n=checkboxes.length;i<n;i++) { 
+          checkboxes[i].checked = source.checked; 
+        }
+      }
+      function notasHome(valor){
+        document.getElementById("notesHome").value = valor.value;
+      }
+      function notasTaxInfo(valor){
+        document.getElementById("notesTaxpayer").value = valor.value;
+      }
+      function notasFiling(valor){
+        document.getElementById("notesFiling").value = valor.value;
+      }
+      function notasDependents(valor){
+        document.getElementById("notesDependents").value = valor.value;
+      }
+      function notasIncome(valor){
+        document.getElementById("notesIncome").value = valor.value;
+      }
+      function notasCRP(valor){
+        document.getElementById("notesCRP").value = valor.value;
+      }
+      function closeModal(){
+        const modal = document.querySelector(".modal");
+        const overlay = document.querySelector(".overlay");
+
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      }
+    //Recap
+      function estadoCivilRecap(){
+        if(document.getElementById("estadoCivilRecap").value == "Casado"){
+          document.getElementById("casadoRecapDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("casadoRecapDiv").classList.add("hidden");
+        }
+      }
+      function ingresosEsposoRecap(){
+        if(document.getElementById("ingresosEsposoRecap").value == "Si"){
+          document.getElementById("notaIngresoRecapDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("notaIngresoRecapDiv").classList.add("hidden");
+        }
+      }
+      function agregarRecap(){
+        if(document.getElementById("agregarDependientesRecap").value == "Si"){
+          document.getElementById("agregarRecapDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("agregarRecapDiv").classList.add("hidden");
+        }
+      }
+      function retirarRecap(){
+        if(document.getElementById("retirarDependienteRecap").value !== "No"){
+          document.getElementById("retirarRecapDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("retirarRecapDiv").classList.add("hidden");
+        }
+      }
+      function dineroRecap(){
+        if(document.getElementById("dependienteTrabajaDependienteRecap").value == "Si"){
+          document.getElementById("cantidadDineroRecapDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("cantidadDineroRecapDiv").classList.add("hidden");
+        }
+      }
+      function cuantasW2Recap(){
+        if(document.getElementById("formasW2Recap").value == "Si"){
+          document.getElementById("cuantasW2RecapDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("cuantasW2RecapDiv").classList.add("hidden");
+        }
+      }
+      function forma1099Recap(){
+        if(document.getElementById("declaraIngresosRecap").value == "1099"){
+          document.getElementById("1099BancoRecapDiv").classList.remove("hidden");
+        }else{
+          document.getElementById("1099BancoRecapDiv").classList.add("hidden");
+        }
+      }
+      function selectAccount(id, name){
+        document.getElementById("llamadaAccountName").value = name;
+        document.getElementById("llamadaAccountGreet").value = id;
+        document.getElementById("accountResultados").innerHTML = "";
+
+        document.getElementById("accountRecapName").value = name;
+        document.getElementById("accountRecap").value = id;
+      }
+      function selectContact(id, name){
+        document.getElementById("llamadaContactName").value = name;
+        document.getElementById("llamadaContactGreet").value = id;
+        document.getElementById("contactResultados").innerHTML = "";
+
+        document.getElementById("contactRecapName").value = name;
+        document.getElementById("contactRecap").value = id;
+      }
+      function selectAccountRecap(id, name){
+        document.getElementById("accountRecapName").value = name;
+        document.getElementById("accountRecap").value = id;
+        document.getElementById("accountRecapResultados").innerHTML = "";
+
+        document.getElementById("llamadaAccountName").value = name;
+        document.getElementById("llamadaAccountGreet").value = id;
+      }
+      function selectContactRecap(id, name){
+        document.getElementById("contactRecapName").value = name;
+        document.getElementById("contactRecap").value = id;
+        document.getElementById("contactRecapResultados").innerHTML = "";
+
+        document.getElementById("llamadaContactName").value = name;
+        document.getElementById("llamadaContactGreet").value = id;
+      }
+      function selectKeyword(id, name){
+        document.getElementById("keywordListName").value = name;
+        document.getElementById("keywordList").value = id;
+        document.getElementById("keywordListResultados").innerHTML = "";
+
+        document.getElementById("subjectRecapName").value = name;
+        document.getElementById("subjectRecap").value = id;
+      }
+      function selectKeywordRecap(id, name){
+        document.getElementById("keywordListName").value = name;
+        document.getElementById("keywordList").value = id;
+
+        document.getElementById("subjectRecapName").value = name;
+        document.getElementById("subjectRecap").value = id;
+        document.getElementById("subjectRecapResultados").innerHTML = "";
+      }
+    </script>
+  </head>
+  <body>
+    <div id='root'></div>
+    <div class="overlay hidden"></div>
+
+    <script src="index.js"></script>
+    <script src='https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js'></script>
+  </body>
+</html>
